@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ivlai.templates.ssm.mapper.ContentMapper">
+  <resultMap id="BaseResultMap" type="com.ivlai.templates.ssm.entity.Content">
+    <id column="content_id" jdbcType="INTEGER" property="contentId" />
+    <result column="content_menu_lv1" jdbcType="VARCHAR" property="contentMenuLv1" />
+    <result column="content_menu_lv1_en" jdbcType="VARCHAR" property="contentMenuLv1En" />
+    <result column="content_menu_lv2" jdbcType="VARCHAR" property="contentMenuLv2" />
+    <result column="content_menu_lv2_en" jdbcType="VARCHAR" property="contentMenuLv2En" />
+    <result column="content_title" jdbcType="VARCHAR" property="contentTitle" />
+    <result column="content_title_en" jdbcType="VARCHAR" property="contentTitleEn" />
+    <result column="content_user" jdbcType="VARCHAR" property="contentUser" />
+    <result column="content_create_time" jdbcType="VARCHAR" property="contentCreateTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ivlai.templates.ssm.entity.ContentWithBLOBs">
+    <result column="content_info" jdbcType="LONGVARCHAR" property="contentInfo" />
+    <result column="content_info_en" jdbcType="LONGVARCHAR" property="contentInfoEn" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    content_id, content_menu_lv1, content_menu_lv1_en, content_menu_lv2, content_menu_lv2_en, 
+    content_title, content_title_en, content_user, content_create_time
+  </sql>
+  <sql id="Blob_Column_List">
+    content_info, content_info_en
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.ivlai.templates.ssm.entity.ContentExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from content
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.ivlai.templates.ssm.entity.ContentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from content
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from content
+    where content_id = #{contentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from content
+    where content_id = #{contentId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ivlai.templates.ssm.entity.ContentExample">
+    delete from content
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ivlai.templates.ssm.entity.ContentWithBLOBs">
+    insert into content (content_id, content_menu_lv1, content_menu_lv1_en, 
+      content_menu_lv2, content_menu_lv2_en, content_title, 
+      content_title_en, content_user, content_create_time, 
+      content_info, content_info_en)
+    values (#{contentId,jdbcType=INTEGER}, #{contentMenuLv1,jdbcType=VARCHAR}, #{contentMenuLv1En,jdbcType=VARCHAR}, 
+      #{contentMenuLv2,jdbcType=VARCHAR}, #{contentMenuLv2En,jdbcType=VARCHAR}, #{contentTitle,jdbcType=VARCHAR}, 
+      #{contentTitleEn,jdbcType=VARCHAR}, #{contentUser,jdbcType=VARCHAR}, #{contentCreateTime,jdbcType=VARCHAR}, 
+      #{contentInfo,jdbcType=LONGVARCHAR}, #{contentInfoEn,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ivlai.templates.ssm.entity.ContentWithBLOBs">
+    insert into content
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contentId != null">
+        content_id,
+      </if>
+      <if test="contentMenuLv1 != null">
+        content_menu_lv1,
+      </if>
+      <if test="contentMenuLv1En != null">
+        content_menu_lv1_en,
+      </if>
+      <if test="contentMenuLv2 != null">
+        content_menu_lv2,
+      </if>
+      <if test="contentMenuLv2En != null">
+        content_menu_lv2_en,
+      </if>
+      <if test="contentTitle != null">
+        content_title,
+      </if>
+      <if test="contentTitleEn != null">
+        content_title_en,
+      </if>
+      <if test="contentUser != null">
+        content_user,
+      </if>
+      <if test="contentCreateTime != null">
+        content_create_time,
+      </if>
+      <if test="contentInfo != null">
+        content_info,
+      </if>
+      <if test="contentInfoEn != null">
+        content_info_en,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contentId != null">
+        #{contentId,jdbcType=INTEGER},
+      </if>
+      <if test="contentMenuLv1 != null">
+        #{contentMenuLv1,jdbcType=VARCHAR},
+      </if>
+      <if test="contentMenuLv1En != null">
+        #{contentMenuLv1En,jdbcType=VARCHAR},
+      </if>
+      <if test="contentMenuLv2 != null">
+        #{contentMenuLv2,jdbcType=VARCHAR},
+      </if>
+      <if test="contentMenuLv2En != null">
+        #{contentMenuLv2En,jdbcType=VARCHAR},
+      </if>
+      <if test="contentTitle != null">
+        #{contentTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="contentTitleEn != null">
+        #{contentTitleEn,jdbcType=VARCHAR},
+      </if>
+      <if test="contentUser != null">
+        #{contentUser,jdbcType=VARCHAR},
+      </if>
+      <if test="contentCreateTime != null">
+        #{contentCreateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="contentInfo != null">
+        #{contentInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="contentInfoEn != null">
+        #{contentInfoEn,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ivlai.templates.ssm.entity.ContentExample" resultType="java.lang.Long">
+    select count(*) from content
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update content
+    <set>
+      <if test="record.contentId != null">
+        content_id = #{record.contentId,jdbcType=INTEGER},
+      </if>
+      <if test="record.contentMenuLv1 != null">
+        content_menu_lv1 = #{record.contentMenuLv1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contentMenuLv1En != null">
+        content_menu_lv1_en = #{record.contentMenuLv1En,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contentMenuLv2 != null">
+        content_menu_lv2 = #{record.contentMenuLv2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contentMenuLv2En != null">
+        content_menu_lv2_en = #{record.contentMenuLv2En,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contentTitle != null">
+        content_title = #{record.contentTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contentTitleEn != null">
+        content_title_en = #{record.contentTitleEn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contentUser != null">
+        content_user = #{record.contentUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contentCreateTime != null">
+        content_create_time = #{record.contentCreateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contentInfo != null">
+        content_info = #{record.contentInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.contentInfoEn != null">
+        content_info_en = #{record.contentInfoEn,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update content
+    set content_id = #{record.contentId,jdbcType=INTEGER},
+      content_menu_lv1 = #{record.contentMenuLv1,jdbcType=VARCHAR},
+      content_menu_lv1_en = #{record.contentMenuLv1En,jdbcType=VARCHAR},
+      content_menu_lv2 = #{record.contentMenuLv2,jdbcType=VARCHAR},
+      content_menu_lv2_en = #{record.contentMenuLv2En,jdbcType=VARCHAR},
+      content_title = #{record.contentTitle,jdbcType=VARCHAR},
+      content_title_en = #{record.contentTitleEn,jdbcType=VARCHAR},
+      content_user = #{record.contentUser,jdbcType=VARCHAR},
+      content_create_time = #{record.contentCreateTime,jdbcType=VARCHAR},
+      content_info = #{record.contentInfo,jdbcType=LONGVARCHAR},
+      content_info_en = #{record.contentInfoEn,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update content
+    set content_id = #{record.contentId,jdbcType=INTEGER},
+      content_menu_lv1 = #{record.contentMenuLv1,jdbcType=VARCHAR},
+      content_menu_lv1_en = #{record.contentMenuLv1En,jdbcType=VARCHAR},
+      content_menu_lv2 = #{record.contentMenuLv2,jdbcType=VARCHAR},
+      content_menu_lv2_en = #{record.contentMenuLv2En,jdbcType=VARCHAR},
+      content_title = #{record.contentTitle,jdbcType=VARCHAR},
+      content_title_en = #{record.contentTitleEn,jdbcType=VARCHAR},
+      content_user = #{record.contentUser,jdbcType=VARCHAR},
+      content_create_time = #{record.contentCreateTime,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ivlai.templates.ssm.entity.ContentWithBLOBs">
+    update content
+    <set>
+      <if test="contentMenuLv1 != null">
+        content_menu_lv1 = #{contentMenuLv1,jdbcType=VARCHAR},
+      </if>
+      <if test="contentMenuLv1En != null">
+        content_menu_lv1_en = #{contentMenuLv1En,jdbcType=VARCHAR},
+      </if>
+      <if test="contentMenuLv2 != null">
+        content_menu_lv2 = #{contentMenuLv2,jdbcType=VARCHAR},
+      </if>
+      <if test="contentMenuLv2En != null">
+        content_menu_lv2_en = #{contentMenuLv2En,jdbcType=VARCHAR},
+      </if>
+      <if test="contentTitle != null">
+        content_title = #{contentTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="contentTitleEn != null">
+        content_title_en = #{contentTitleEn,jdbcType=VARCHAR},
+      </if>
+      <if test="contentUser != null">
+        content_user = #{contentUser,jdbcType=VARCHAR},
+      </if>
+      <if test="contentCreateTime != null">
+        content_create_time = #{contentCreateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="contentInfo != null">
+        content_info = #{contentInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="contentInfoEn != null">
+        content_info_en = #{contentInfoEn,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where content_id = #{contentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ivlai.templates.ssm.entity.ContentWithBLOBs">
+    update content
+    set content_menu_lv1 = #{contentMenuLv1,jdbcType=VARCHAR},
+      content_menu_lv1_en = #{contentMenuLv1En,jdbcType=VARCHAR},
+      content_menu_lv2 = #{contentMenuLv2,jdbcType=VARCHAR},
+      content_menu_lv2_en = #{contentMenuLv2En,jdbcType=VARCHAR},
+      content_title = #{contentTitle,jdbcType=VARCHAR},
+      content_title_en = #{contentTitleEn,jdbcType=VARCHAR},
+      content_user = #{contentUser,jdbcType=VARCHAR},
+      content_create_time = #{contentCreateTime,jdbcType=VARCHAR},
+      content_info = #{contentInfo,jdbcType=LONGVARCHAR},
+      content_info_en = #{contentInfoEn,jdbcType=LONGVARCHAR}
+    where content_id = #{contentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ivlai.templates.ssm.entity.Content">
+    update content
+    set content_menu_lv1 = #{contentMenuLv1,jdbcType=VARCHAR},
+      content_menu_lv1_en = #{contentMenuLv1En,jdbcType=VARCHAR},
+      content_menu_lv2 = #{contentMenuLv2,jdbcType=VARCHAR},
+      content_menu_lv2_en = #{contentMenuLv2En,jdbcType=VARCHAR},
+      content_title = #{contentTitle,jdbcType=VARCHAR},
+      content_title_en = #{contentTitleEn,jdbcType=VARCHAR},
+      content_user = #{contentUser,jdbcType=VARCHAR},
+      content_create_time = #{contentCreateTime,jdbcType=VARCHAR}
+    where content_id = #{contentId,jdbcType=INTEGER}
+  </update>
+</mapper>

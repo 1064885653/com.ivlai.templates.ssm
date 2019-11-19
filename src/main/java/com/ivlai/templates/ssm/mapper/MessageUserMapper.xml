@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ivlai.templates.ssm.mapper.MessageUserMapper">
+  <resultMap id="BaseResultMap" type="com.ivlai.templates.ssm.entity.MessageUser">
+    <id column="message_user_id" jdbcType="INTEGER" property="messageUserId" />
+    <result column="message_user_name" jdbcType="VARCHAR" property="messageUserName" />
+    <result column="message_user_type" jdbcType="INTEGER" property="messageUserType" />
+    <result column="message_user_appellation" jdbcType="VARCHAR" property="messageUserAppellation" />
+    <result column="message_user_age" jdbcType="INTEGER" property="messageUserAge" />
+    <result column="message_user_gender" jdbcType="INTEGER" property="messageUserGender" />
+    <result column="message_user_nation" jdbcType="INTEGER" property="messageUserNation" />
+    <result column="message_user_nationality" jdbcType="VARCHAR" property="messageUserNationality" />
+    <result column="message_user_address" jdbcType="VARCHAR" property="messageUserAddress" />
+    <result column="message_user_address_now" jdbcType="VARCHAR" property="messageUserAddressNow" />
+    <result column="message_user_phone" jdbcType="VARCHAR" property="messageUserPhone" />
+    <result column="message_user_qq" jdbcType="VARCHAR" property="messageUserQq" />
+    <result column="message_user_wechat" jdbcType="VARCHAR" property="messageUserWechat" />
+    <result column="message_user_email" jdbcType="VARCHAR" property="messageUserEmail" />
+    <result column="message_user_company_name" jdbcType="VARCHAR" property="messageUserCompanyName" />
+    <result column="message_user_company_post" jdbcType="VARCHAR" property="messageUserCompanyPost" />
+    <result column="message_user_company_address" jdbcType="VARCHAR" property="messageUserCompanyAddress" />
+    <result column="message_user_company_phone" jdbcType="VARCHAR" property="messageUserCompanyPhone" />
+    <result column="message_user_company_phone_fix" jdbcType="VARCHAR" property="messageUserCompanyPhoneFix" />
+    <result column="message_user_company_email" jdbcType="VARCHAR" property="messageUserCompanyEmail" />
+    <result column="message_user_info_remark" jdbcType="VARCHAR" property="messageUserInfoRemark" />
+    <result column="message_user_info_message" jdbcType="VARCHAR" property="messageUserInfoMessage" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    message_user_id, message_user_name, message_user_type, message_user_appellation, 
+    message_user_age, message_user_gender, message_user_nation, message_user_nationality, 
+    message_user_address, message_user_address_now, message_user_phone, message_user_qq, 
+    message_user_wechat, message_user_email, message_user_company_name, message_user_company_post, 
+    message_user_company_address, message_user_company_phone, message_user_company_phone_fix, 
+    message_user_company_email, message_user_info_remark, message_user_info_message
+  </sql>
+  <select id="selectByExample" parameterType="com.ivlai.templates.ssm.entity.MessageUserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from message_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from message_user
+    where message_user_id = #{messageUserId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from message_user
+    where message_user_id = #{messageUserId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ivlai.templates.ssm.entity.MessageUserExample">
+    delete from message_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ivlai.templates.ssm.entity.MessageUser">
+    insert into message_user (message_user_id, message_user_name, message_user_type, 
+      message_user_appellation, message_user_age, 
+      message_user_gender, message_user_nation, message_user_nationality, 
+      message_user_address, message_user_address_now, 
+      message_user_phone, message_user_qq, message_user_wechat, 
+      message_user_email, message_user_company_name, 
+      message_user_company_post, message_user_company_address, 
+      message_user_company_phone, message_user_company_phone_fix, 
+      message_user_company_email, message_user_info_remark, 
+      message_user_info_message)
+    values (#{messageUserId,jdbcType=INTEGER}, #{messageUserName,jdbcType=VARCHAR}, #{messageUserType,jdbcType=INTEGER}, 
+      #{messageUserAppellation,jdbcType=VARCHAR}, #{messageUserAge,jdbcType=INTEGER}, 
+      #{messageUserGender,jdbcType=INTEGER}, #{messageUserNation,jdbcType=INTEGER}, #{messageUserNationality,jdbcType=VARCHAR}, 
+      #{messageUserAddress,jdbcType=VARCHAR}, #{messageUserAddressNow,jdbcType=VARCHAR}, 
+      #{messageUserPhone,jdbcType=VARCHAR}, #{messageUserQq,jdbcType=VARCHAR}, #{messageUserWechat,jdbcType=VARCHAR}, 
+      #{messageUserEmail,jdbcType=VARCHAR}, #{messageUserCompanyName,jdbcType=VARCHAR}, 
+      #{messageUserCompanyPost,jdbcType=VARCHAR}, #{messageUserCompanyAddress,jdbcType=VARCHAR}, 
+      #{messageUserCompanyPhone,jdbcType=VARCHAR}, #{messageUserCompanyPhoneFix,jdbcType=VARCHAR}, 
+      #{messageUserCompanyEmail,jdbcType=VARCHAR}, #{messageUserInfoRemark,jdbcType=VARCHAR}, 
+      #{messageUserInfoMessage,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ivlai.templates.ssm.entity.MessageUser">
+    insert into message_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="messageUserId != null">
+        message_user_id,
+      </if>
+      <if test="messageUserName != null">
+        message_user_name,
+      </if>
+      <if test="messageUserType != null">
+        message_user_type,
+      </if>
+      <if test="messageUserAppellation != null">
+        message_user_appellation,
+      </if>
+      <if test="messageUserAge != null">
+        message_user_age,
+      </if>
+      <if test="messageUserGender != null">
+        message_user_gender,
+      </if>
+      <if test="messageUserNation != null">
+        message_user_nation,
+      </if>
+      <if test="messageUserNationality != null">
+        message_user_nationality,
+      </if>
+      <if test="messageUserAddress != null">
+        message_user_address,
+      </if>
+      <if test="messageUserAddressNow != null">
+        message_user_address_now,
+      </if>
+      <if test="messageUserPhone != null">
+        message_user_phone,
+      </if>
+      <if test="messageUserQq != null">
+        message_user_qq,
+      </if>
+      <if test="messageUserWechat != null">
+        message_user_wechat,
+      </if>
+      <if test="messageUserEmail != null">
+        message_user_email,
+      </if>
+      <if test="messageUserCompanyName != null">
+        message_user_company_name,
+      </if>
+      <if test="messageUserCompanyPost != null">
+        message_user_company_post,
+      </if>
+      <if test="messageUserCompanyAddress != null">
+        message_user_company_address,
+      </if>
+      <if test="messageUserCompanyPhone != null">
+        message_user_company_phone,
+      </if>
+      <if test="messageUserCompanyPhoneFix != null">
+        message_user_company_phone_fix,
+      </if>
+      <if test="messageUserCompanyEmail != null">
+        message_user_company_email,
+      </if>
+      <if test="messageUserInfoRemark != null">
+        message_user_info_remark,
+      </if>
+      <if test="messageUserInfoMessage != null">
+        message_user_info_message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="messageUserId != null">
+        #{messageUserId,jdbcType=INTEGER},
+      </if>
+      <if test="messageUserName != null">
+        #{messageUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserType != null">
+        #{messageUserType,jdbcType=INTEGER},
+      </if>
+      <if test="messageUserAppellation != null">
+        #{messageUserAppellation,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserAge != null">
+        #{messageUserAge,jdbcType=INTEGER},
+      </if>
+      <if test="messageUserGender != null">
+        #{messageUserGender,jdbcType=INTEGER},
+      </if>
+      <if test="messageUserNation != null">
+        #{messageUserNation,jdbcType=INTEGER},
+      </if>
+      <if test="messageUserNationality != null">
+        #{messageUserNationality,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserAddress != null">
+        #{messageUserAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserAddressNow != null">
+        #{messageUserAddressNow,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserPhone != null">
+        #{messageUserPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserQq != null">
+        #{messageUserQq,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserWechat != null">
+        #{messageUserWechat,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserEmail != null">
+        #{messageUserEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserCompanyName != null">
+        #{messageUserCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserCompanyPost != null">
+        #{messageUserCompanyPost,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserCompanyAddress != null">
+        #{messageUserCompanyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserCompanyPhone != null">
+        #{messageUserCompanyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserCompanyPhoneFix != null">
+        #{messageUserCompanyPhoneFix,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserCompanyEmail != null">
+        #{messageUserCompanyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserInfoRemark != null">
+        #{messageUserInfoRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserInfoMessage != null">
+        #{messageUserInfoMessage,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ivlai.templates.ssm.entity.MessageUserExample" resultType="java.lang.Long">
+    select count(*) from message_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update message_user
+    <set>
+      <if test="record.messageUserId != null">
+        message_user_id = #{record.messageUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.messageUserName != null">
+        message_user_name = #{record.messageUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messageUserType != null">
+        message_user_type = #{record.messageUserType,jdbcType=INTEGER},
+      </if>
+      <if test="record.messageUserAppellation != null">
+        message_user_appellation = #{record.messageUserAppellation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messageUserAge != null">
+        message_user_age = #{record.messageUserAge,jdbcType=INTEGER},
+      </if>
+      <if test="record.messageUserGender != null">
+        message_user_gender = #{record.messageUserGender,jdbcType=INTEGER},
+      </if>
+      <if test="record.messageUserNation != null">
+        message_user_nation = #{record.messageUserNation,jdbcType=INTEGER},
+      </if>
+      <if test="record.messageUserNationality != null">
+        message_user_nationality = #{record.messageUserNationality,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messageUserAddress != null">
+        message_user_address = #{record.messageUserAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messageUserAddressNow != null">
+        message_user_address_now = #{record.messageUserAddressNow,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messageUserPhone != null">
+        message_user_phone = #{record.messageUserPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messageUserQq != null">
+        message_user_qq = #{record.messageUserQq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messageUserWechat != null">
+        message_user_wechat = #{record.messageUserWechat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messageUserEmail != null">
+        message_user_email = #{record.messageUserEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messageUserCompanyName != null">
+        message_user_company_name = #{record.messageUserCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messageUserCompanyPost != null">
+        message_user_company_post = #{record.messageUserCompanyPost,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messageUserCompanyAddress != null">
+        message_user_company_address = #{record.messageUserCompanyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messageUserCompanyPhone != null">
+        message_user_company_phone = #{record.messageUserCompanyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messageUserCompanyPhoneFix != null">
+        message_user_company_phone_fix = #{record.messageUserCompanyPhoneFix,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messageUserCompanyEmail != null">
+        message_user_company_email = #{record.messageUserCompanyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messageUserInfoRemark != null">
+        message_user_info_remark = #{record.messageUserInfoRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messageUserInfoMessage != null">
+        message_user_info_message = #{record.messageUserInfoMessage,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update message_user
+    set message_user_id = #{record.messageUserId,jdbcType=INTEGER},
+      message_user_name = #{record.messageUserName,jdbcType=VARCHAR},
+      message_user_type = #{record.messageUserType,jdbcType=INTEGER},
+      message_user_appellation = #{record.messageUserAppellation,jdbcType=VARCHAR},
+      message_user_age = #{record.messageUserAge,jdbcType=INTEGER},
+      message_user_gender = #{record.messageUserGender,jdbcType=INTEGER},
+      message_user_nation = #{record.messageUserNation,jdbcType=INTEGER},
+      message_user_nationality = #{record.messageUserNationality,jdbcType=VARCHAR},
+      message_user_address = #{record.messageUserAddress,jdbcType=VARCHAR},
+      message_user_address_now = #{record.messageUserAddressNow,jdbcType=VARCHAR},
+      message_user_phone = #{record.messageUserPhone,jdbcType=VARCHAR},
+      message_user_qq = #{record.messageUserQq,jdbcType=VARCHAR},
+      message_user_wechat = #{record.messageUserWechat,jdbcType=VARCHAR},
+      message_user_email = #{record.messageUserEmail,jdbcType=VARCHAR},
+      message_user_company_name = #{record.messageUserCompanyName,jdbcType=VARCHAR},
+      message_user_company_post = #{record.messageUserCompanyPost,jdbcType=VARCHAR},
+      message_user_company_address = #{record.messageUserCompanyAddress,jdbcType=VARCHAR},
+      message_user_company_phone = #{record.messageUserCompanyPhone,jdbcType=VARCHAR},
+      message_user_company_phone_fix = #{record.messageUserCompanyPhoneFix,jdbcType=VARCHAR},
+      message_user_company_email = #{record.messageUserCompanyEmail,jdbcType=VARCHAR},
+      message_user_info_remark = #{record.messageUserInfoRemark,jdbcType=VARCHAR},
+      message_user_info_message = #{record.messageUserInfoMessage,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ivlai.templates.ssm.entity.MessageUser">
+    update message_user
+    <set>
+      <if test="messageUserName != null">
+        message_user_name = #{messageUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserType != null">
+        message_user_type = #{messageUserType,jdbcType=INTEGER},
+      </if>
+      <if test="messageUserAppellation != null">
+        message_user_appellation = #{messageUserAppellation,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserAge != null">
+        message_user_age = #{messageUserAge,jdbcType=INTEGER},
+      </if>
+      <if test="messageUserGender != null">
+        message_user_gender = #{messageUserGender,jdbcType=INTEGER},
+      </if>
+      <if test="messageUserNation != null">
+        message_user_nation = #{messageUserNation,jdbcType=INTEGER},
+      </if>
+      <if test="messageUserNationality != null">
+        message_user_nationality = #{messageUserNationality,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserAddress != null">
+        message_user_address = #{messageUserAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserAddressNow != null">
+        message_user_address_now = #{messageUserAddressNow,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserPhone != null">
+        message_user_phone = #{messageUserPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserQq != null">
+        message_user_qq = #{messageUserQq,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserWechat != null">
+        message_user_wechat = #{messageUserWechat,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserEmail != null">
+        message_user_email = #{messageUserEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserCompanyName != null">
+        message_user_company_name = #{messageUserCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserCompanyPost != null">
+        message_user_company_post = #{messageUserCompanyPost,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserCompanyAddress != null">
+        message_user_company_address = #{messageUserCompanyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserCompanyPhone != null">
+        message_user_company_phone = #{messageUserCompanyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserCompanyPhoneFix != null">
+        message_user_company_phone_fix = #{messageUserCompanyPhoneFix,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserCompanyEmail != null">
+        message_user_company_email = #{messageUserCompanyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserInfoRemark != null">
+        message_user_info_remark = #{messageUserInfoRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUserInfoMessage != null">
+        message_user_info_message = #{messageUserInfoMessage,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where message_user_id = #{messageUserId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ivlai.templates.ssm.entity.MessageUser">
+    update message_user
+    set message_user_name = #{messageUserName,jdbcType=VARCHAR},
+      message_user_type = #{messageUserType,jdbcType=INTEGER},
+      message_user_appellation = #{messageUserAppellation,jdbcType=VARCHAR},
+      message_user_age = #{messageUserAge,jdbcType=INTEGER},
+      message_user_gender = #{messageUserGender,jdbcType=INTEGER},
+      message_user_nation = #{messageUserNation,jdbcType=INTEGER},
+      message_user_nationality = #{messageUserNationality,jdbcType=VARCHAR},
+      message_user_address = #{messageUserAddress,jdbcType=VARCHAR},
+      message_user_address_now = #{messageUserAddressNow,jdbcType=VARCHAR},
+      message_user_phone = #{messageUserPhone,jdbcType=VARCHAR},
+      message_user_qq = #{messageUserQq,jdbcType=VARCHAR},
+      message_user_wechat = #{messageUserWechat,jdbcType=VARCHAR},
+      message_user_email = #{messageUserEmail,jdbcType=VARCHAR},
+      message_user_company_name = #{messageUserCompanyName,jdbcType=VARCHAR},
+      message_user_company_post = #{messageUserCompanyPost,jdbcType=VARCHAR},
+      message_user_company_address = #{messageUserCompanyAddress,jdbcType=VARCHAR},
+      message_user_company_phone = #{messageUserCompanyPhone,jdbcType=VARCHAR},
+      message_user_company_phone_fix = #{messageUserCompanyPhoneFix,jdbcType=VARCHAR},
+      message_user_company_email = #{messageUserCompanyEmail,jdbcType=VARCHAR},
+      message_user_info_remark = #{messageUserInfoRemark,jdbcType=VARCHAR},
+      message_user_info_message = #{messageUserInfoMessage,jdbcType=VARCHAR}
+    where message_user_id = #{messageUserId,jdbcType=INTEGER}
+  </update>
+</mapper>

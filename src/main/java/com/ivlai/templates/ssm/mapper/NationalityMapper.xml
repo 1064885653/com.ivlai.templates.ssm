@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ivlai.templates.ssm.mapper.NationalityMapper">
+  <resultMap id="BaseResultMap" type="com.ivlai.templates.ssm.entity.Nationality">
+    <id column="nationality_english" jdbcType="VARCHAR" property="nationalityEnglish" />
+    <result column="nationality_chinese" jdbcType="VARCHAR" property="nationalityChinese" />
+    <result column="country_or_region" jdbcType="VARCHAR" property="countryOrRegion" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    nationality_english, nationality_chinese, country_or_region
+  </sql>
+  <select id="selectByExample" parameterType="com.ivlai.templates.ssm.entity.NationalityExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from nationality
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from nationality
+    where nationality_english = #{nationalityEnglish,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from nationality
+    where nationality_english = #{nationalityEnglish,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ivlai.templates.ssm.entity.NationalityExample">
+    delete from nationality
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ivlai.templates.ssm.entity.Nationality">
+    insert into nationality (nationality_english, nationality_chinese, 
+      country_or_region)
+    values (#{nationalityEnglish,jdbcType=VARCHAR}, #{nationalityChinese,jdbcType=VARCHAR}, 
+      #{countryOrRegion,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ivlai.templates.ssm.entity.Nationality">
+    insert into nationality
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="nationalityEnglish != null">
+        nationality_english,
+      </if>
+      <if test="nationalityChinese != null">
+        nationality_chinese,
+      </if>
+      <if test="countryOrRegion != null">
+        country_or_region,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="nationalityEnglish != null">
+        #{nationalityEnglish,jdbcType=VARCHAR},
+      </if>
+      <if test="nationalityChinese != null">
+        #{nationalityChinese,jdbcType=VARCHAR},
+      </if>
+      <if test="countryOrRegion != null">
+        #{countryOrRegion,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ivlai.templates.ssm.entity.NationalityExample" resultType="java.lang.Long">
+    select count(*) from nationality
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update nationality
+    <set>
+      <if test="record.nationalityEnglish != null">
+        nationality_english = #{record.nationalityEnglish,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nationalityChinese != null">
+        nationality_chinese = #{record.nationalityChinese,jdbcType=VARCHAR},
+      </if>
+      <if test="record.countryOrRegion != null">
+        country_or_region = #{record.countryOrRegion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update nationality
+    set nationality_english = #{record.nationalityEnglish,jdbcType=VARCHAR},
+      nationality_chinese = #{record.nationalityChinese,jdbcType=VARCHAR},
+      country_or_region = #{record.countryOrRegion,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ivlai.templates.ssm.entity.Nationality">
+    update nationality
+    <set>
+      <if test="nationalityChinese != null">
+        nationality_chinese = #{nationalityChinese,jdbcType=VARCHAR},
+      </if>
+      <if test="countryOrRegion != null">
+        country_or_region = #{countryOrRegion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where nationality_english = #{nationalityEnglish,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ivlai.templates.ssm.entity.Nationality">
+    update nationality
+    set nationality_chinese = #{nationalityChinese,jdbcType=VARCHAR},
+      country_or_region = #{countryOrRegion,jdbcType=VARCHAR}
+    where nationality_english = #{nationalityEnglish,jdbcType=VARCHAR}
+  </update>
+</mapper>
