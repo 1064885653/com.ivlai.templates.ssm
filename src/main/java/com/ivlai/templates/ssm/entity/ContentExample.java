@@ -164,283 +164,63 @@ public class ContentExample {
             return (Criteria) this;
         }
 
-        public Criteria andContentMenuLv1IsNull() {
-            addCriterion("content_menu_lv1 is null");
+        public Criteria andContentMenuIsNull() {
+            addCriterion("content_menu is null");
             return (Criteria) this;
         }
 
-        public Criteria andContentMenuLv1IsNotNull() {
-            addCriterion("content_menu_lv1 is not null");
+        public Criteria andContentMenuIsNotNull() {
+            addCriterion("content_menu is not null");
             return (Criteria) this;
         }
 
-        public Criteria andContentMenuLv1EqualTo(String value) {
-            addCriterion("content_menu_lv1 =", value, "contentMenuLv1");
+        public Criteria andContentMenuEqualTo(Integer value) {
+            addCriterion("content_menu =", value, "contentMenu");
             return (Criteria) this;
         }
 
-        public Criteria andContentMenuLv1NotEqualTo(String value) {
-            addCriterion("content_menu_lv1 <>", value, "contentMenuLv1");
+        public Criteria andContentMenuNotEqualTo(Integer value) {
+            addCriterion("content_menu <>", value, "contentMenu");
             return (Criteria) this;
         }
 
-        public Criteria andContentMenuLv1GreaterThan(String value) {
-            addCriterion("content_menu_lv1 >", value, "contentMenuLv1");
+        public Criteria andContentMenuGreaterThan(Integer value) {
+            addCriterion("content_menu >", value, "contentMenu");
             return (Criteria) this;
         }
 
-        public Criteria andContentMenuLv1GreaterThanOrEqualTo(String value) {
-            addCriterion("content_menu_lv1 >=", value, "contentMenuLv1");
+        public Criteria andContentMenuGreaterThanOrEqualTo(Integer value) {
+            addCriterion("content_menu >=", value, "contentMenu");
             return (Criteria) this;
         }
 
-        public Criteria andContentMenuLv1LessThan(String value) {
-            addCriterion("content_menu_lv1 <", value, "contentMenuLv1");
+        public Criteria andContentMenuLessThan(Integer value) {
+            addCriterion("content_menu <", value, "contentMenu");
             return (Criteria) this;
         }
 
-        public Criteria andContentMenuLv1LessThanOrEqualTo(String value) {
-            addCriterion("content_menu_lv1 <=", value, "contentMenuLv1");
+        public Criteria andContentMenuLessThanOrEqualTo(Integer value) {
+            addCriterion("content_menu <=", value, "contentMenu");
             return (Criteria) this;
         }
 
-        public Criteria andContentMenuLv1Like(String value) {
-            addCriterion("content_menu_lv1 like", value, "contentMenuLv1");
+        public Criteria andContentMenuIn(List<Integer> values) {
+            addCriterion("content_menu in", values, "contentMenu");
             return (Criteria) this;
         }
 
-        public Criteria andContentMenuLv1NotLike(String value) {
-            addCriterion("content_menu_lv1 not like", value, "contentMenuLv1");
+        public Criteria andContentMenuNotIn(List<Integer> values) {
+            addCriterion("content_menu not in", values, "contentMenu");
             return (Criteria) this;
         }
 
-        public Criteria andContentMenuLv1In(List<String> values) {
-            addCriterion("content_menu_lv1 in", values, "contentMenuLv1");
+        public Criteria andContentMenuBetween(Integer value1, Integer value2) {
+            addCriterion("content_menu between", value1, value2, "contentMenu");
             return (Criteria) this;
         }
 
-        public Criteria andContentMenuLv1NotIn(List<String> values) {
-            addCriterion("content_menu_lv1 not in", values, "contentMenuLv1");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv1Between(String value1, String value2) {
-            addCriterion("content_menu_lv1 between", value1, value2, "contentMenuLv1");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv1NotBetween(String value1, String value2) {
-            addCriterion("content_menu_lv1 not between", value1, value2, "contentMenuLv1");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv1EnIsNull() {
-            addCriterion("content_menu_lv1_en is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv1EnIsNotNull() {
-            addCriterion("content_menu_lv1_en is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv1EnEqualTo(String value) {
-            addCriterion("content_menu_lv1_en =", value, "contentMenuLv1En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv1EnNotEqualTo(String value) {
-            addCriterion("content_menu_lv1_en <>", value, "contentMenuLv1En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv1EnGreaterThan(String value) {
-            addCriterion("content_menu_lv1_en >", value, "contentMenuLv1En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv1EnGreaterThanOrEqualTo(String value) {
-            addCriterion("content_menu_lv1_en >=", value, "contentMenuLv1En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv1EnLessThan(String value) {
-            addCriterion("content_menu_lv1_en <", value, "contentMenuLv1En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv1EnLessThanOrEqualTo(String value) {
-            addCriterion("content_menu_lv1_en <=", value, "contentMenuLv1En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv1EnLike(String value) {
-            addCriterion("content_menu_lv1_en like", value, "contentMenuLv1En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv1EnNotLike(String value) {
-            addCriterion("content_menu_lv1_en not like", value, "contentMenuLv1En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv1EnIn(List<String> values) {
-            addCriterion("content_menu_lv1_en in", values, "contentMenuLv1En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv1EnNotIn(List<String> values) {
-            addCriterion("content_menu_lv1_en not in", values, "contentMenuLv1En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv1EnBetween(String value1, String value2) {
-            addCriterion("content_menu_lv1_en between", value1, value2, "contentMenuLv1En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv1EnNotBetween(String value1, String value2) {
-            addCriterion("content_menu_lv1_en not between", value1, value2, "contentMenuLv1En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2IsNull() {
-            addCriterion("content_menu_lv2 is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2IsNotNull() {
-            addCriterion("content_menu_lv2 is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2EqualTo(String value) {
-            addCriterion("content_menu_lv2 =", value, "contentMenuLv2");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2NotEqualTo(String value) {
-            addCriterion("content_menu_lv2 <>", value, "contentMenuLv2");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2GreaterThan(String value) {
-            addCriterion("content_menu_lv2 >", value, "contentMenuLv2");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2GreaterThanOrEqualTo(String value) {
-            addCriterion("content_menu_lv2 >=", value, "contentMenuLv2");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2LessThan(String value) {
-            addCriterion("content_menu_lv2 <", value, "contentMenuLv2");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2LessThanOrEqualTo(String value) {
-            addCriterion("content_menu_lv2 <=", value, "contentMenuLv2");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2Like(String value) {
-            addCriterion("content_menu_lv2 like", value, "contentMenuLv2");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2NotLike(String value) {
-            addCriterion("content_menu_lv2 not like", value, "contentMenuLv2");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2In(List<String> values) {
-            addCriterion("content_menu_lv2 in", values, "contentMenuLv2");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2NotIn(List<String> values) {
-            addCriterion("content_menu_lv2 not in", values, "contentMenuLv2");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2Between(String value1, String value2) {
-            addCriterion("content_menu_lv2 between", value1, value2, "contentMenuLv2");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2NotBetween(String value1, String value2) {
-            addCriterion("content_menu_lv2 not between", value1, value2, "contentMenuLv2");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2EnIsNull() {
-            addCriterion("content_menu_lv2_en is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2EnIsNotNull() {
-            addCriterion("content_menu_lv2_en is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2EnEqualTo(String value) {
-            addCriterion("content_menu_lv2_en =", value, "contentMenuLv2En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2EnNotEqualTo(String value) {
-            addCriterion("content_menu_lv2_en <>", value, "contentMenuLv2En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2EnGreaterThan(String value) {
-            addCriterion("content_menu_lv2_en >", value, "contentMenuLv2En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2EnGreaterThanOrEqualTo(String value) {
-            addCriterion("content_menu_lv2_en >=", value, "contentMenuLv2En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2EnLessThan(String value) {
-            addCriterion("content_menu_lv2_en <", value, "contentMenuLv2En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2EnLessThanOrEqualTo(String value) {
-            addCriterion("content_menu_lv2_en <=", value, "contentMenuLv2En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2EnLike(String value) {
-            addCriterion("content_menu_lv2_en like", value, "contentMenuLv2En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2EnNotLike(String value) {
-            addCriterion("content_menu_lv2_en not like", value, "contentMenuLv2En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2EnIn(List<String> values) {
-            addCriterion("content_menu_lv2_en in", values, "contentMenuLv2En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2EnNotIn(List<String> values) {
-            addCriterion("content_menu_lv2_en not in", values, "contentMenuLv2En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2EnBetween(String value1, String value2) {
-            addCriterion("content_menu_lv2_en between", value1, value2, "contentMenuLv2En");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentMenuLv2EnNotBetween(String value1, String value2) {
-            addCriterion("content_menu_lv2_en not between", value1, value2, "contentMenuLv2En");
+        public Criteria andContentMenuNotBetween(Integer value1, Integer value2) {
+            addCriterion("content_menu not between", value1, value2, "contentMenu");
             return (Criteria) this;
         }
 

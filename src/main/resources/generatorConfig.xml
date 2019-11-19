@@ -55,13 +55,7 @@
         </javaClientGenerator>
 
         <!--  设定反向生成的表 -->
-        <table tableName="admin_user"/>
         <table tableName="content"/>
-        <table tableName="index_bean"/>
-        <table tableName="message_user"/>
-        <table tableName="nationality"/>
-        <table tableName="user_info"/>
-        <table tableName="user_nation"/>
-        <table tableName="user_type"/>
+        <table tableName="content_menu"/>
     </context>
 </generatorConfiguration>

@@ -3,10 +3,7 @@
 <mapper namespace="com.ivlai.templates.ssm.mapper.ContentMapper">
   <resultMap id="BaseResultMap" type="com.ivlai.templates.ssm.entity.Content">
     <id column="content_id" jdbcType="INTEGER" property="contentId" />
-    <result column="content_menu_lv1" jdbcType="VARCHAR" property="contentMenuLv1" />
-    <result column="content_menu_lv1_en" jdbcType="VARCHAR" property="contentMenuLv1En" />
-    <result column="content_menu_lv2" jdbcType="VARCHAR" property="contentMenuLv2" />
-    <result column="content_menu_lv2_en" jdbcType="VARCHAR" property="contentMenuLv2En" />
+    <result column="content_menu" jdbcType="INTEGER" property="contentMenu" />
     <result column="content_title" jdbcType="VARCHAR" property="contentTitle" />
     <result column="content_title_en" jdbcType="VARCHAR" property="contentTitleEn" />
     <result column="content_user" jdbcType="VARCHAR" property="contentUser" />
@@ -75,8 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    content_id, content_menu_lv1, content_menu_lv1_en, content_menu_lv2, content_menu_lv2_en, 
-    content_title, content_title_en, content_user, content_create_time
+    content_id, content_menu, content_title, content_title_en, content_user, content_create_time
   </sql>
   <sql id="Blob_Column_List">
     content_info, content_info_en
@@ -130,12 +126,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.ivlai.templates.ssm.entity.ContentWithBLOBs">
-    insert into content (content_id, content_menu_lv1, content_menu_lv1_en, 
-      content_menu_lv2, content_menu_lv2_en, content_title, 
+    insert into content (content_id, content_menu, content_title, 
       content_title_en, content_user, content_create_time, 
       content_info, content_info_en)
-    values (#{contentId,jdbcType=INTEGER}, #{contentMenuLv1,jdbcType=VARCHAR}, #{contentMenuLv1En,jdbcType=VARCHAR}, 
-      #{contentMenuLv2,jdbcType=VARCHAR}, #{contentMenuLv2En,jdbcType=VARCHAR}, #{contentTitle,jdbcType=VARCHAR}, 
+    values (#{contentId,jdbcType=INTEGER}, #{contentMenu,jdbcType=INTEGER}, #{contentTitle,jdbcType=VARCHAR}, 
       #{contentTitleEn,jdbcType=VARCHAR}, #{contentUser,jdbcType=VARCHAR}, #{contentCreateTime,jdbcType=VARCHAR}, 
       #{contentInfo,jdbcType=LONGVARCHAR}, #{contentInfoEn,jdbcType=LONGVARCHAR})
   </insert>
@@ -145,17 +139,8 @@
       <if test="contentId != null">
         content_id,
       </if>
-      <if test="contentMenuLv1 != null">
-        content_menu_lv1,
-      </if>
-      <if test="contentMenuLv1En != null">
-        content_menu_lv1_en,
-      </if>
-      <if test="contentMenuLv2 != null">
-        content_menu_lv2,
-      </if>
-      <if test="contentMenuLv2En != null">
-        content_menu_lv2_en,
+      <if test="contentMenu != null">
+        content_menu,
       </if>
       <if test="contentTitle != null">
         content_title,
@@ -180,17 +165,8 @@
       <if test="contentId != null">
         #{contentId,jdbcType=INTEGER},
       </if>
-      <if test="contentMenuLv1 != null">
-        #{contentMenuLv1,jdbcType=VARCHAR},
-      </if>
-      <if test="contentMenuLv1En != null">
-        #{contentMenuLv1En,jdbcType=VARCHAR},
-      </if>
-      <if test="contentMenuLv2 != null">
-        #{contentMenuLv2,jdbcType=VARCHAR},
-      </if>
-      <if test="contentMenuLv2En != null">
-        #{contentMenuLv2En,jdbcType=VARCHAR},
+      <if test="contentMenu != null">
+        #{contentMenu,jdbcType=INTEGER},
       </if>
       <if test="contentTitle != null">
         #{contentTitle,jdbcType=VARCHAR},
@@ -224,17 +200,8 @@
       <if test="record.contentId != null">
         content_id = #{record.contentId,jdbcType=INTEGER},
       </if>
-      <if test="record.contentMenuLv1 != null">
-        content_menu_lv1 = #{record.contentMenuLv1,jdbcType=VARCHAR},
-      </if>
-      <if test="record.contentMenuLv1En != null">
-        content_menu_lv1_en = #{record.contentMenuLv1En,jdbcType=VARCHAR},
-      </if>
-      <if test="record.contentMenuLv2 != null">
-        content_menu_lv2 = #{record.contentMenuLv2,jdbcType=VARCHAR},
-      </if>
-      <if test="record.contentMenuLv2En != null">
-        content_menu_lv2_en = #{record.contentMenuLv2En,jdbcType=VARCHAR},
+      <if test="record.contentMenu != null">
+        content_menu = #{record.contentMenu,jdbcType=INTEGER},
       </if>
       <if test="record.contentTitle != null">
         content_title = #{record.contentTitle,jdbcType=VARCHAR},
@@ -262,10 +229,7 @@
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update content
     set content_id = #{record.contentId,jdbcType=INTEGER},
-      content_menu_lv1 = #{record.contentMenuLv1,jdbcType=VARCHAR},
-      content_menu_lv1_en = #{record.contentMenuLv1En,jdbcType=VARCHAR},
-      content_menu_lv2 = #{record.contentMenuLv2,jdbcType=VARCHAR},
-      content_menu_lv2_en = #{record.contentMenuLv2En,jdbcType=VARCHAR},
+      content_menu = #{record.contentMenu,jdbcType=INTEGER},
       content_title = #{record.contentTitle,jdbcType=VARCHAR},
       content_title_en = #{record.contentTitleEn,jdbcType=VARCHAR},
       content_user = #{record.contentUser,jdbcType=VARCHAR},
@@ -279,10 +243,7 @@
   <update id="updateByExample" parameterType="map">
     update content
     set content_id = #{record.contentId,jdbcType=INTEGER},
-      content_menu_lv1 = #{record.contentMenuLv1,jdbcType=VARCHAR},
-      content_menu_lv1_en = #{record.contentMenuLv1En,jdbcType=VARCHAR},
-      content_menu_lv2 = #{record.contentMenuLv2,jdbcType=VARCHAR},
-      content_menu_lv2_en = #{record.contentMenuLv2En,jdbcType=VARCHAR},
+      content_menu = #{record.contentMenu,jdbcType=INTEGER},
       content_title = #{record.contentTitle,jdbcType=VARCHAR},
       content_title_en = #{record.contentTitleEn,jdbcType=VARCHAR},
       content_user = #{record.contentUser,jdbcType=VARCHAR},
@@ -294,17 +255,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.ivlai.templates.ssm.entity.ContentWithBLOBs">
     update content
     <set>
-      <if test="contentMenuLv1 != null">
-        content_menu_lv1 = #{contentMenuLv1,jdbcType=VARCHAR},
-      </if>
-      <if test="contentMenuLv1En != null">
-        content_menu_lv1_en = #{contentMenuLv1En,jdbcType=VARCHAR},
-      </if>
-      <if test="contentMenuLv2 != null">
-        content_menu_lv2 = #{contentMenuLv2,jdbcType=VARCHAR},
-      </if>
-      <if test="contentMenuLv2En != null">
-        content_menu_lv2_en = #{contentMenuLv2En,jdbcType=VARCHAR},
+      <if test="contentMenu != null">
+        content_menu = #{contentMenu,jdbcType=INTEGER},
       </if>
       <if test="contentTitle != null">
         content_title = #{contentTitle,jdbcType=VARCHAR},
@@ -329,10 +281,7 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ivlai.templates.ssm.entity.ContentWithBLOBs">
     update content
-    set content_menu_lv1 = #{contentMenuLv1,jdbcType=VARCHAR},
-      content_menu_lv1_en = #{contentMenuLv1En,jdbcType=VARCHAR},
-      content_menu_lv2 = #{contentMenuLv2,jdbcType=VARCHAR},
-      content_menu_lv2_en = #{contentMenuLv2En,jdbcType=VARCHAR},
+    set content_menu = #{contentMenu,jdbcType=INTEGER},
       content_title = #{contentTitle,jdbcType=VARCHAR},
       content_title_en = #{contentTitleEn,jdbcType=VARCHAR},
       content_user = #{contentUser,jdbcType=VARCHAR},
@@ -343,10 +292,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.ivlai.templates.ssm.entity.Content">
     update content
-    set content_menu_lv1 = #{contentMenuLv1,jdbcType=VARCHAR},
-      content_menu_lv1_en = #{contentMenuLv1En,jdbcType=VARCHAR},
-      content_menu_lv2 = #{contentMenuLv2,jdbcType=VARCHAR},
-      content_menu_lv2_en = #{contentMenuLv2En,jdbcType=VARCHAR},
+    set content_menu = #{contentMenu,jdbcType=INTEGER},
       content_title = #{contentTitle,jdbcType=VARCHAR},
       content_title_en = #{contentTitleEn,jdbcType=VARCHAR},
       content_user = #{contentUser,jdbcType=VARCHAR},
