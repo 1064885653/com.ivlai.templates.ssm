@@ -1,211 +1,246 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ivlai.templates.ssm.mapper.ContentMenuMapper">
-  <resultMap id="BaseResultMap" type="com.ivlai.templates.ssm.entity.ContentMenu">
-    <id column="content_menu_id" jdbcType="INTEGER" property="contentMenuId" />
-    <result column="content_menu_type" jdbcType="VARCHAR" property="contentMenuType" />
-    <result column="content_menu_type_en" jdbcType="VARCHAR" property="contentMenuTypeEn" />
-    <result column="content_menu_title" jdbcType="VARCHAR" property="contentMenuTitle" />
-    <result column="content_menu_title_en" jdbcType="VARCHAR" property="contentMenuTitleEn" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+    <resultMap id="BaseResultMap" type="com.ivlai.templates.ssm.entity.ContentMenu">
+        <id column="content_menu_id" jdbcType="INTEGER" property="contentMenuId"/>
+        <result column="content_menu_type" jdbcType="VARCHAR" property="contentMenuType"/>
+        <result column="content_menu_type_en" jdbcType="VARCHAR" property="contentMenuTypeEn"/>
+        <result column="content_menu_type_url" jdbcType="VARCHAR" property="contentMenuTypeUrl"/>
+        <result column="content_menu_title" jdbcType="VARCHAR" property="contentMenuTitle"/>
+        <result column="content_menu_title_en" jdbcType="VARCHAR" property="contentMenuTitleEn"/>
+        <result column="content_menu_title_url" jdbcType="VARCHAR" property="contentMenuTitleUrl"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        content_menu_id, content_menu_type, content_menu_type_en, content_menu_type_url,
+    content_menu_title, content_menu_title_en, content_menu_title_url
+    </sql>
+    <select id="selectByExample" parameterType="com.ivlai.templates.ssm.entity.ContentMenuExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
         </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    content_menu_id, content_menu_type, content_menu_type_en, content_menu_title, content_menu_title_en
-  </sql>
-  <select id="selectByExample" parameterType="com.ivlai.templates.ssm.entity.ContentMenuExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from content_menu
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from content_menu
-    where content_menu_id = #{contentMenuId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from content_menu
-    where content_menu_id = #{contentMenuId,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.ivlai.templates.ssm.entity.ContentMenuExample">
-    delete from content_menu
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.ivlai.templates.ssm.entity.ContentMenu">
-    insert into content_menu (content_menu_id, content_menu_type, content_menu_type_en, 
-      content_menu_title, content_menu_title_en)
-    values (#{contentMenuId,jdbcType=INTEGER}, #{contentMenuType,jdbcType=VARCHAR}, #{contentMenuTypeEn,jdbcType=VARCHAR}, 
-      #{contentMenuTitle,jdbcType=VARCHAR}, #{contentMenuTitleEn,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.ivlai.templates.ssm.entity.ContentMenu">
-    insert into content_menu
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="contentMenuId != null">
-        content_menu_id,
-      </if>
-      <if test="contentMenuType != null">
-        content_menu_type,
-      </if>
-      <if test="contentMenuTypeEn != null">
-        content_menu_type_en,
-      </if>
-      <if test="contentMenuTitle != null">
-        content_menu_title,
-      </if>
-      <if test="contentMenuTitleEn != null">
-        content_menu_title_en,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="contentMenuId != null">
-        #{contentMenuId,jdbcType=INTEGER},
-      </if>
-      <if test="contentMenuType != null">
-        #{contentMenuType,jdbcType=VARCHAR},
-      </if>
-      <if test="contentMenuTypeEn != null">
-        #{contentMenuTypeEn,jdbcType=VARCHAR},
-      </if>
-      <if test="contentMenuTitle != null">
-        #{contentMenuTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="contentMenuTitleEn != null">
-        #{contentMenuTitleEn,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.ivlai.templates.ssm.entity.ContentMenuExample" resultType="java.lang.Long">
-    select count(*) from content_menu
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update content_menu
-    <set>
-      <if test="record.contentMenuId != null">
-        content_menu_id = #{record.contentMenuId,jdbcType=INTEGER},
-      </if>
-      <if test="record.contentMenuType != null">
+        <include refid="Base_Column_List"/>
+        from content_menu
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from content_menu
+        where content_menu_id = #{contentMenuId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from content_menu
+        where content_menu_id = #{contentMenuId,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.ivlai.templates.ssm.entity.ContentMenuExample">
+        delete from content_menu
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.ivlai.templates.ssm.entity.ContentMenu">
+        insert into content_menu (content_menu_id, content_menu_type, content_menu_type_en,
+                                  content_menu_type_url, content_menu_title, content_menu_title_en,
+                                  content_menu_title_url)
+        values (#{contentMenuId,jdbcType=INTEGER}, #{contentMenuType,jdbcType=VARCHAR}, #{contentMenuTypeEn,jdbcType=VARCHAR},
+                #{contentMenuTypeUrl,jdbcType=VARCHAR}, #{contentMenuTitle,jdbcType=VARCHAR}, #{contentMenuTitleEn,jdbcType=VARCHAR},
+                #{contentMenuTitleUrl,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.ivlai.templates.ssm.entity.ContentMenu">
+        insert into content_menu
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="contentMenuId != null">
+                content_menu_id,
+            </if>
+            <if test="contentMenuType != null">
+                content_menu_type,
+            </if>
+            <if test="contentMenuTypeEn != null">
+                content_menu_type_en,
+            </if>
+            <if test="contentMenuTypeUrl != null">
+                content_menu_type_url,
+            </if>
+            <if test="contentMenuTitle != null">
+                content_menu_title,
+            </if>
+            <if test="contentMenuTitleEn != null">
+                content_menu_title_en,
+            </if>
+            <if test="contentMenuTitleUrl != null">
+                content_menu_title_url,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="contentMenuId != null">
+                #{contentMenuId,jdbcType=INTEGER},
+            </if>
+            <if test="contentMenuType != null">
+                #{contentMenuType,jdbcType=VARCHAR},
+            </if>
+            <if test="contentMenuTypeEn != null">
+                #{contentMenuTypeEn,jdbcType=VARCHAR},
+            </if>
+            <if test="contentMenuTypeUrl != null">
+                #{contentMenuTypeUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="contentMenuTitle != null">
+                #{contentMenuTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="contentMenuTitleEn != null">
+                #{contentMenuTitleEn,jdbcType=VARCHAR},
+            </if>
+            <if test="contentMenuTitleUrl != null">
+                #{contentMenuTitleUrl,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.ivlai.templates.ssm.entity.ContentMenuExample" resultType="java.lang.Long">
+        select count(*) from content_menu
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update content_menu
+        <set>
+            <if test="record.contentMenuId != null">
+                content_menu_id = #{record.contentMenuId,jdbcType=INTEGER},
+            </if>
+            <if test="record.contentMenuType != null">
+                content_menu_type = #{record.contentMenuType,jdbcType=VARCHAR},
+            </if>
+            <if test="record.contentMenuTypeEn != null">
+                content_menu_type_en = #{record.contentMenuTypeEn,jdbcType=VARCHAR},
+            </if>
+            <if test="record.contentMenuTypeUrl != null">
+                content_menu_type_url = #{record.contentMenuTypeUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="record.contentMenuTitle != null">
+                content_menu_title = #{record.contentMenuTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="record.contentMenuTitleEn != null">
+                content_menu_title_en = #{record.contentMenuTitleEn,jdbcType=VARCHAR},
+            </if>
+            <if test="record.contentMenuTitleUrl != null">
+                content_menu_title_url = #{record.contentMenuTitleUrl,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update content_menu
+        set content_menu_id = #{record.contentMenuId,jdbcType=INTEGER},
         content_menu_type = #{record.contentMenuType,jdbcType=VARCHAR},
-      </if>
-      <if test="record.contentMenuTypeEn != null">
         content_menu_type_en = #{record.contentMenuTypeEn,jdbcType=VARCHAR},
-      </if>
-      <if test="record.contentMenuTitle != null">
+        content_menu_type_url = #{record.contentMenuTypeUrl,jdbcType=VARCHAR},
         content_menu_title = #{record.contentMenuTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="record.contentMenuTitleEn != null">
         content_menu_title_en = #{record.contentMenuTitleEn,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update content_menu
-    set content_menu_id = #{record.contentMenuId,jdbcType=INTEGER},
-      content_menu_type = #{record.contentMenuType,jdbcType=VARCHAR},
-      content_menu_type_en = #{record.contentMenuTypeEn,jdbcType=VARCHAR},
-      content_menu_title = #{record.contentMenuTitle,jdbcType=VARCHAR},
-      content_menu_title_en = #{record.contentMenuTitleEn,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ivlai.templates.ssm.entity.ContentMenu">
-    update content_menu
-    <set>
-      <if test="contentMenuType != null">
-        content_menu_type = #{contentMenuType,jdbcType=VARCHAR},
-      </if>
-      <if test="contentMenuTypeEn != null">
-        content_menu_type_en = #{contentMenuTypeEn,jdbcType=VARCHAR},
-      </if>
-      <if test="contentMenuTitle != null">
-        content_menu_title = #{contentMenuTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="contentMenuTitleEn != null">
-        content_menu_title_en = #{contentMenuTitleEn,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where content_menu_id = #{contentMenuId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.ivlai.templates.ssm.entity.ContentMenu">
-    update content_menu
-    set content_menu_type = #{contentMenuType,jdbcType=VARCHAR},
-      content_menu_type_en = #{contentMenuTypeEn,jdbcType=VARCHAR},
-      content_menu_title = #{contentMenuTitle,jdbcType=VARCHAR},
-      content_menu_title_en = #{contentMenuTitleEn,jdbcType=VARCHAR}
-    where content_menu_id = #{contentMenuId,jdbcType=INTEGER}
-  </update>
+        content_menu_title_url = #{record.contentMenuTitleUrl,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.ivlai.templates.ssm.entity.ContentMenu">
+        update content_menu
+        <set>
+            <if test="contentMenuType != null">
+                content_menu_type = #{contentMenuType,jdbcType=VARCHAR},
+            </if>
+            <if test="contentMenuTypeEn != null">
+                content_menu_type_en = #{contentMenuTypeEn,jdbcType=VARCHAR},
+            </if>
+            <if test="contentMenuTypeUrl != null">
+                content_menu_type_url = #{contentMenuTypeUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="contentMenuTitle != null">
+                content_menu_title = #{contentMenuTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="contentMenuTitleEn != null">
+                content_menu_title_en = #{contentMenuTitleEn,jdbcType=VARCHAR},
+            </if>
+            <if test="contentMenuTitleUrl != null">
+                content_menu_title_url = #{contentMenuTitleUrl,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where content_menu_id = #{contentMenuId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.ivlai.templates.ssm.entity.ContentMenu">
+        update content_menu
+        set content_menu_type      = #{contentMenuType,jdbcType=VARCHAR},
+            content_menu_type_en   = #{contentMenuTypeEn,jdbcType=VARCHAR},
+            content_menu_type_url  = #{contentMenuTypeUrl,jdbcType=VARCHAR},
+            content_menu_title     = #{contentMenuTitle,jdbcType=VARCHAR},
+            content_menu_title_en  = #{contentMenuTitleEn,jdbcType=VARCHAR},
+            content_menu_title_url = #{contentMenuTitleUrl,jdbcType=VARCHAR}
+        where content_menu_id = #{contentMenuId,jdbcType=INTEGER}
+    </update>
+
 </mapper>

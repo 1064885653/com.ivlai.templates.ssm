@@ -304,6 +304,76 @@ public class ContentMenuExample {
             return (Criteria) this;
         }
 
+        public Criteria andContentMenuTypeUrlIsNull() {
+            addCriterion("content_menu_type_url is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTypeUrlIsNotNull() {
+            addCriterion("content_menu_type_url is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTypeUrlEqualTo(String value) {
+            addCriterion("content_menu_type_url =", value, "contentMenuTypeUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTypeUrlNotEqualTo(String value) {
+            addCriterion("content_menu_type_url <>", value, "contentMenuTypeUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTypeUrlGreaterThan(String value) {
+            addCriterion("content_menu_type_url >", value, "contentMenuTypeUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTypeUrlGreaterThanOrEqualTo(String value) {
+            addCriterion("content_menu_type_url >=", value, "contentMenuTypeUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTypeUrlLessThan(String value) {
+            addCriterion("content_menu_type_url <", value, "contentMenuTypeUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTypeUrlLessThanOrEqualTo(String value) {
+            addCriterion("content_menu_type_url <=", value, "contentMenuTypeUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTypeUrlLike(String value) {
+            addCriterion("content_menu_type_url like", value, "contentMenuTypeUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTypeUrlNotLike(String value) {
+            addCriterion("content_menu_type_url not like", value, "contentMenuTypeUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTypeUrlIn(List<String> values) {
+            addCriterion("content_menu_type_url in", values, "contentMenuTypeUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTypeUrlNotIn(List<String> values) {
+            addCriterion("content_menu_type_url not in", values, "contentMenuTypeUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTypeUrlBetween(String value1, String value2) {
+            addCriterion("content_menu_type_url between", value1, value2, "contentMenuTypeUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTypeUrlNotBetween(String value1, String value2) {
+            addCriterion("content_menu_type_url not between", value1, value2, "contentMenuTypeUrl");
+            return (Criteria) this;
+        }
+
         public Criteria andContentMenuTitleIsNull() {
             addCriterion("content_menu_title is null");
             return (Criteria) this;
@@ -441,6 +511,76 @@ public class ContentMenuExample {
 
         public Criteria andContentMenuTitleEnNotBetween(String value1, String value2) {
             addCriterion("content_menu_title_en not between", value1, value2, "contentMenuTitleEn");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTitleUrlIsNull() {
+            addCriterion("content_menu_title_url is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTitleUrlIsNotNull() {
+            addCriterion("content_menu_title_url is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTitleUrlEqualTo(String value) {
+            addCriterion("content_menu_title_url =", value, "contentMenuTitleUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTitleUrlNotEqualTo(String value) {
+            addCriterion("content_menu_title_url <>", value, "contentMenuTitleUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTitleUrlGreaterThan(String value) {
+            addCriterion("content_menu_title_url >", value, "contentMenuTitleUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTitleUrlGreaterThanOrEqualTo(String value) {
+            addCriterion("content_menu_title_url >=", value, "contentMenuTitleUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTitleUrlLessThan(String value) {
+            addCriterion("content_menu_title_url <", value, "contentMenuTitleUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTitleUrlLessThanOrEqualTo(String value) {
+            addCriterion("content_menu_title_url <=", value, "contentMenuTitleUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTitleUrlLike(String value) {
+            addCriterion("content_menu_title_url like", value, "contentMenuTitleUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTitleUrlNotLike(String value) {
+            addCriterion("content_menu_title_url not like", value, "contentMenuTitleUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTitleUrlIn(List<String> values) {
+            addCriterion("content_menu_title_url in", values, "contentMenuTitleUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTitleUrlNotIn(List<String> values) {
+            addCriterion("content_menu_title_url not in", values, "contentMenuTitleUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTitleUrlBetween(String value1, String value2) {
+            addCriterion("content_menu_title_url between", value1, value2, "contentMenuTitleUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentMenuTitleUrlNotBetween(String value1, String value2) {
+            addCriterion("content_menu_title_url not between", value1, value2, "contentMenuTitleUrl");
             return (Criteria) this;
         }
     }

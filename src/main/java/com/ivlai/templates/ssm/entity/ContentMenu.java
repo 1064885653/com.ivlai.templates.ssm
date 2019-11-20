@@ -7,9 +7,13 @@ public class ContentMenu {
 
     private String contentMenuTypeEn;
 
+    private String contentMenuTypeUrl;
+
     private String contentMenuTitle;
 
     private String contentMenuTitleEn;
+
+    private String contentMenuTitleUrl;
 
     public Integer getContentMenuId() {
         return contentMenuId;
@@ -35,6 +39,14 @@ public class ContentMenu {
         this.contentMenuTypeEn = contentMenuTypeEn == null ? null : contentMenuTypeEn.trim();
     }
 
+    public String getContentMenuTypeUrl() {
+        return contentMenuTypeUrl;
+    }
+
+    public void setContentMenuTypeUrl(String contentMenuTypeUrl) {
+        this.contentMenuTypeUrl = contentMenuTypeUrl == null ? null : contentMenuTypeUrl.trim();
+    }
+
     public String getContentMenuTitle() {
         return contentMenuTitle;
     }
@@ -49,5 +61,26 @@ public class ContentMenu {
 
     public void setContentMenuTitleEn(String contentMenuTitleEn) {
         this.contentMenuTitleEn = contentMenuTitleEn == null ? null : contentMenuTitleEn.trim();
+    }
+
+    public String getContentMenuTitleUrl() {
+        return contentMenuTitleUrl;
+    }
+
+    public void setContentMenuTitleUrl(String contentMenuTitleUrl) {
+        this.contentMenuTitleUrl = contentMenuTitleUrl == null ? null : contentMenuTitleUrl.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "ContentMenu{" +
+                "contentMenuId=" + contentMenuId +
+                ", contentMenuType='" + contentMenuType + '\'' +
+                ", contentMenuTypeEn='" + contentMenuTypeEn + '\'' +
+                ", contentMenuTypeUrl='" + contentMenuTypeUrl + '\'' +
+                ", contentMenuTitle='" + contentMenuTitle + '\'' +
+                ", contentMenuTitleEn='" + contentMenuTitleEn + '\'' +
+                ", contentMenuTitleUrl='" + contentMenuTitleUrl + '\'' +
+                '}';
     }
 }
