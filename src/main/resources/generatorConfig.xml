@@ -55,6 +55,6 @@
         </javaClientGenerator>
 
         <!--  设定反向生成的表 -->
-        <table tableName="content_menu"/>
+        <table tableName="admin_parameter"/>
     </context>
 </generatorConfiguration>

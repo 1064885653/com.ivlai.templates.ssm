@@ -1,228 +1,245 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ivlai.templates.ssm.mapper.AdminUserMapper">
-  <resultMap id="BaseResultMap" type="com.ivlai.templates.ssm.entity.AdminUser">
-    <id column="admin_account" jdbcType="VARCHAR" property="adminAccount" />
-    <result column="admin_password" jdbcType="VARCHAR" property="adminPassword" />
-    <result column="admin_name" jdbcType="VARCHAR" property="adminName" />
-    <result column="admin_user" jdbcType="INTEGER" property="adminUser" />
-    <result column="admin_contact" jdbcType="VARCHAR" property="adminContact" />
-    <result column="admin_message" jdbcType="VARCHAR" property="adminMessage" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+    <resultMap id="BaseResultMap" type="com.ivlai.templates.ssm.entity.AdminUser">
+        <id column="admin_account" jdbcType="VARCHAR" property="adminAccount"/>
+        <result column="admin_password" jdbcType="VARCHAR" property="adminPassword"/>
+        <result column="admin_name" jdbcType="VARCHAR" property="adminName"/>
+        <result column="admin_user" jdbcType="INTEGER" property="adminUser"/>
+        <result column="admin_contact" jdbcType="VARCHAR" property="adminContact"/>
+        <result column="admin_message" jdbcType="VARCHAR" property="adminMessage"/>
+        <result column="admin_menu" jdbcType="VARCHAR" property="adminMenu"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        admin_account, admin_password, admin_name, admin_user, admin_contact, admin_message,
+    admin_menu
+    </sql>
+    <select id="selectByExample" parameterType="com.ivlai.templates.ssm.entity.AdminUserExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
         </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    admin_account, admin_password, admin_name, admin_user, admin_contact, admin_message
-  </sql>
-  <select id="selectByExample" parameterType="com.ivlai.templates.ssm.entity.AdminUserExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from admin_user
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from admin_user
-    where admin_account = #{adminAccount,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from admin_user
-    where admin_account = #{adminAccount,jdbcType=VARCHAR}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.ivlai.templates.ssm.entity.AdminUserExample">
-    delete from admin_user
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.ivlai.templates.ssm.entity.AdminUser">
-    insert into admin_user (admin_account, admin_password, admin_name, 
-      admin_user, admin_contact, admin_message
-      )
-    values (#{adminAccount,jdbcType=VARCHAR}, #{adminPassword,jdbcType=VARCHAR}, #{adminName,jdbcType=VARCHAR}, 
-      #{adminUser,jdbcType=INTEGER}, #{adminContact,jdbcType=VARCHAR}, #{adminMessage,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.ivlai.templates.ssm.entity.AdminUser">
-    insert into admin_user
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="adminAccount != null">
-        admin_account,
-      </if>
-      <if test="adminPassword != null">
-        admin_password,
-      </if>
-      <if test="adminName != null">
-        admin_name,
-      </if>
-      <if test="adminUser != null">
-        admin_user,
-      </if>
-      <if test="adminContact != null">
-        admin_contact,
-      </if>
-      <if test="adminMessage != null">
-        admin_message,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="adminAccount != null">
-        #{adminAccount,jdbcType=VARCHAR},
-      </if>
-      <if test="adminPassword != null">
-        #{adminPassword,jdbcType=VARCHAR},
-      </if>
-      <if test="adminName != null">
-        #{adminName,jdbcType=VARCHAR},
-      </if>
-      <if test="adminUser != null">
-        #{adminUser,jdbcType=INTEGER},
-      </if>
-      <if test="adminContact != null">
-        #{adminContact,jdbcType=VARCHAR},
-      </if>
-      <if test="adminMessage != null">
-        #{adminMessage,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.ivlai.templates.ssm.entity.AdminUserExample" resultType="java.lang.Long">
-    select count(*) from admin_user
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update admin_user
-    <set>
-      <if test="record.adminAccount != null">
-        admin_account = #{record.adminAccount,jdbcType=VARCHAR},
-      </if>
-      <if test="record.adminPassword != null">
+        <include refid="Base_Column_List"/>
+        from admin_user
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from admin_user
+        where admin_account = #{adminAccount,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from admin_user
+        where admin_account = #{adminAccount,jdbcType=VARCHAR}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.ivlai.templates.ssm.entity.AdminUserExample">
+        delete from admin_user
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.ivlai.templates.ssm.entity.AdminUser">
+        insert into admin_user (admin_account, admin_password, admin_name,
+                                admin_user, admin_contact, admin_message,
+                                admin_menu)
+        values (#{adminAccount,jdbcType=VARCHAR}, #{adminPassword,jdbcType=VARCHAR}, #{adminName,jdbcType=VARCHAR},
+                #{adminUser,jdbcType=INTEGER}, #{adminContact,jdbcType=VARCHAR}, #{adminMessage,jdbcType=VARCHAR},
+                #{adminMenu,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.ivlai.templates.ssm.entity.AdminUser">
+        insert into admin_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="adminAccount != null">
+                admin_account,
+            </if>
+            <if test="adminPassword != null">
+                admin_password,
+            </if>
+            <if test="adminName != null">
+                admin_name,
+            </if>
+            <if test="adminUser != null">
+                admin_user,
+            </if>
+            <if test="adminContact != null">
+                admin_contact,
+            </if>
+            <if test="adminMessage != null">
+                admin_message,
+            </if>
+            <if test="adminMenu != null">
+                admin_menu,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="adminAccount != null">
+                #{adminAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="adminPassword != null">
+                #{adminPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="adminName != null">
+                #{adminName,jdbcType=VARCHAR},
+            </if>
+            <if test="adminUser != null">
+                #{adminUser,jdbcType=INTEGER},
+            </if>
+            <if test="adminContact != null">
+                #{adminContact,jdbcType=VARCHAR},
+            </if>
+            <if test="adminMessage != null">
+                #{adminMessage,jdbcType=VARCHAR},
+            </if>
+            <if test="adminMenu != null">
+                #{adminMenu,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.ivlai.templates.ssm.entity.AdminUserExample" resultType="java.lang.Long">
+        select count(*) from admin_user
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update admin_user
+        <set>
+            <if test="record.adminAccount != null">
+                admin_account = #{record.adminAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="record.adminPassword != null">
+                admin_password = #{record.adminPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="record.adminName != null">
+                admin_name = #{record.adminName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.adminUser != null">
+                admin_user = #{record.adminUser,jdbcType=INTEGER},
+            </if>
+            <if test="record.adminContact != null">
+                admin_contact = #{record.adminContact,jdbcType=VARCHAR},
+            </if>
+            <if test="record.adminMessage != null">
+                admin_message = #{record.adminMessage,jdbcType=VARCHAR},
+            </if>
+            <if test="record.adminMenu != null">
+                admin_menu = #{record.adminMenu,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update admin_user
+        set admin_account = #{record.adminAccount,jdbcType=VARCHAR},
         admin_password = #{record.adminPassword,jdbcType=VARCHAR},
-      </if>
-      <if test="record.adminName != null">
         admin_name = #{record.adminName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.adminUser != null">
         admin_user = #{record.adminUser,jdbcType=INTEGER},
-      </if>
-      <if test="record.adminContact != null">
         admin_contact = #{record.adminContact,jdbcType=VARCHAR},
-      </if>
-      <if test="record.adminMessage != null">
         admin_message = #{record.adminMessage,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update admin_user
-    set admin_account = #{record.adminAccount,jdbcType=VARCHAR},
-      admin_password = #{record.adminPassword,jdbcType=VARCHAR},
-      admin_name = #{record.adminName,jdbcType=VARCHAR},
-      admin_user = #{record.adminUser,jdbcType=INTEGER},
-      admin_contact = #{record.adminContact,jdbcType=VARCHAR},
-      admin_message = #{record.adminMessage,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ivlai.templates.ssm.entity.AdminUser">
-    update admin_user
-    <set>
-      <if test="adminPassword != null">
-        admin_password = #{adminPassword,jdbcType=VARCHAR},
-      </if>
-      <if test="adminName != null">
-        admin_name = #{adminName,jdbcType=VARCHAR},
-      </if>
-      <if test="adminUser != null">
-        admin_user = #{adminUser,jdbcType=INTEGER},
-      </if>
-      <if test="adminContact != null">
-        admin_contact = #{adminContact,jdbcType=VARCHAR},
-      </if>
-      <if test="adminMessage != null">
-        admin_message = #{adminMessage,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where admin_account = #{adminAccount,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.ivlai.templates.ssm.entity.AdminUser">
-    update admin_user
-    set admin_password = #{adminPassword,jdbcType=VARCHAR},
-      admin_name = #{adminName,jdbcType=VARCHAR},
-      admin_user = #{adminUser,jdbcType=INTEGER},
-      admin_contact = #{adminContact,jdbcType=VARCHAR},
-      admin_message = #{adminMessage,jdbcType=VARCHAR}
-    where admin_account = #{adminAccount,jdbcType=VARCHAR}
-  </update>
+        admin_menu = #{record.adminMenu,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.ivlai.templates.ssm.entity.AdminUser">
+        update admin_user
+        <set>
+            <if test="adminPassword != null">
+                admin_password = #{adminPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="adminName != null">
+                admin_name = #{adminName,jdbcType=VARCHAR},
+            </if>
+            <if test="adminUser != null">
+                admin_user = #{adminUser,jdbcType=INTEGER},
+            </if>
+            <if test="adminContact != null">
+                admin_contact = #{adminContact,jdbcType=VARCHAR},
+            </if>
+            <if test="adminMessage != null">
+                admin_message = #{adminMessage,jdbcType=VARCHAR},
+            </if>
+            <if test="adminMenu != null">
+                admin_menu = #{adminMenu,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where admin_account = #{adminAccount,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.ivlai.templates.ssm.entity.AdminUser">
+        update admin_user
+        set admin_password = #{adminPassword,jdbcType=VARCHAR},
+            admin_name     = #{adminName,jdbcType=VARCHAR},
+            admin_user     = #{adminUser,jdbcType=INTEGER},
+            admin_contact  = #{adminContact,jdbcType=VARCHAR},
+            admin_message  = #{adminMessage,jdbcType=VARCHAR},
+            admin_menu     = #{adminMenu,jdbcType=VARCHAR}
+        where admin_account = #{adminAccount,jdbcType=VARCHAR}
+    </update>
 </mapper>

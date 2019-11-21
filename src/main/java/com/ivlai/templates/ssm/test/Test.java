@@ -1,4 +1,4 @@
-package com.ivlai.templates.ssm.utils;
+package com.ivlai.templates.ssm.test;
 
 import com.ivlai.templates.ssm.entity.ContentMenu;
 

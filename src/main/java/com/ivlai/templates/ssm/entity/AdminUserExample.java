@@ -513,6 +513,76 @@ public class AdminUserExample {
             addCriterion("admin_message not between", value1, value2, "adminMessage");
             return (Criteria) this;
         }
+
+        public Criteria andAdminMenuIsNull() {
+            addCriterion("admin_menu is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminMenuIsNotNull() {
+            addCriterion("admin_menu is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminMenuEqualTo(String value) {
+            addCriterion("admin_menu =", value, "adminMenu");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminMenuNotEqualTo(String value) {
+            addCriterion("admin_menu <>", value, "adminMenu");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminMenuGreaterThan(String value) {
+            addCriterion("admin_menu >", value, "adminMenu");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminMenuGreaterThanOrEqualTo(String value) {
+            addCriterion("admin_menu >=", value, "adminMenu");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminMenuLessThan(String value) {
+            addCriterion("admin_menu <", value, "adminMenu");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminMenuLessThanOrEqualTo(String value) {
+            addCriterion("admin_menu <=", value, "adminMenu");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminMenuLike(String value) {
+            addCriterion("admin_menu like", value, "adminMenu");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminMenuNotLike(String value) {
+            addCriterion("admin_menu not like", value, "adminMenu");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminMenuIn(List<String> values) {
+            addCriterion("admin_menu in", values, "adminMenu");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminMenuNotIn(List<String> values) {
+            addCriterion("admin_menu not in", values, "adminMenu");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminMenuBetween(String value1, String value2) {
+            addCriterion("admin_menu between", value1, value2, "adminMenu");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdminMenuNotBetween(String value1, String value2) {
+            addCriterion("admin_menu not between", value1, value2, "adminMenu");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -13,6 +13,8 @@ public class AdminUser {
 
     private String adminMessage;
 
+    private String adminMenu;
+
     public String getAdminAccount() {
         return adminAccount;
     }
@@ -59,5 +61,13 @@ public class AdminUser {
 
     public void setAdminMessage(String adminMessage) {
         this.adminMessage = adminMessage == null ? null : adminMessage.trim();
+    }
+
+    public String getAdminMenu() {
+        return adminMenu;
+    }
+
+    public void setAdminMenu(String adminMenu) {
+        this.adminMenu = adminMenu == null ? null : adminMenu.trim();
     }
 }
