@@ -10,11 +10,11 @@ public interface AdminUserService {
 
     AdminUser selectAdminUserByAdminUser(AdminUser adminUser);
 
-    List<AdminUser> selectAdminUserListByAdminUser(AdminUser adminUser);
+    List<AdminUser> selectAdminUserList();
 
     int insertAdminUserByAdminUser(AdminUser adminUser);
 
-    int deleteAdminUserByAdminUser(List<AdminUser> adminUserList);
+    int deleteAdminUserByAdminUser(List<String> adminUserList);
 
     int updateAdminUserByAdminUser(AdminUser adminUser);
 

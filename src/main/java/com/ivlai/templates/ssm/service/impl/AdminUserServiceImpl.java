@@ -27,7 +27,7 @@ public class AdminUserServiceImpl implements AdminUserService {
     }
 
     @Override
-    public List<AdminUser> selectAdminUserListByAdminUser(AdminUser adminUser) {
+    public List<AdminUser> selectAdminUserList() {
         return adminUserMapper.selectByExample(null);
     }
 
@@ -37,10 +37,10 @@ public class AdminUserServiceImpl implements AdminUserService {
     }
 
     @Override
-    public int deleteAdminUserByAdminUser(List<AdminUser> adminUserList) {
+    public int deleteAdminUserByAdminUser(List<String> adminUserList) {
         AdminUserExample adminUserExample = new AdminUserExample();
         AdminUserExample.Criteria criteria = adminUserExample.createCriteria();
-        criteria.andAdminAccountIn(adminUserList.stream().map(AdminUser::getAdminAccount).collect(Collectors.toList()));
+        criteria.andAdminAccountIn(adminUserList);
         return adminUserMapper.deleteByExample(adminUserExample);
     }
 
@@ -95,7 +95,7 @@ public class AdminUserServiceImpl implements AdminUserService {
     public int deleteAdminMenuByAdminMenuId(List<Integer> adminMenuIdList) {
         AdminMenuExample adminMenuExample = new AdminMenuExample();
         AdminMenuExample.Criteria criteria = adminMenuExample.createCriteria();
-        criteria.andAdminMenuUpLvIn(adminMenuIdList);
+        criteria.andAdminMenuIdIn(adminMenuIdList);
         return adminMenuMapper.deleteByExample(adminMenuExample);
     }
 
