@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebFilter({"/admin/do/*"})
-public class AdminFilter implements Filter {
+public class Filter09_AdminFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         TimeUtil.WriteTimeLog("管理员登录限制器初始化成功。");
@@ -29,6 +29,6 @@ public class AdminFilter implements Filter {
 
     @Override
     public void destroy() {
-        TimeUtil.WriteTimeLog("管理员登录限制器注销成功。");
+        TimeUtil.WriteTimeLog("管理员登录限制器销毁成功。");
     }
 }

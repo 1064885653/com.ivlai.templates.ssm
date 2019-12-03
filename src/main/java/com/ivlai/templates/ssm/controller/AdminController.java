@@ -161,8 +161,6 @@ public class AdminController {
      */
     @RequestMapping("do/index")
     public String _index(
-            HttpServletRequest request
-            , Model model
     ) {
         return "redirect:/admin/do/admin";
     }
@@ -172,16 +170,6 @@ public class AdminController {
      */
     @RequestMapping("do/user")
     public String user() {
-       /* if ( null != userIdList && userIdList.size() > 0) {
-            int i = userInfoService.deleteUserInfoByUserInfoId(userIdList);
-            if (i > 0) {
-                model.addAttribute("info", "删除成功");
-            } else {
-                model.addAttribute("info", "删除失败");
-            }
-        }
-        List<UserInfo> userInfoList = userInfoService.selectUserInfoListByUserInfo(null);
-        model.addAttribute("userInfoList", userInfoList);*/
         return "WEB-INF/user/index";
     }
 

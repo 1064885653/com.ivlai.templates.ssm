@@ -2,12 +2,13 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page contentType="text/html; charset=utf-8" %>
 <c:set var="langMap" value="${sessionScope.langMap}"/>
+<c:set var="langObj" value="${sessionScope.langObj}"/>
 <c:set var="lang" value="${sessionScope.lang}"/>
-<c:set var="menuActive" value="1"/><%-- 选中的菜单 --%>
+<c:set var="menuActive" value="8"/> <%-- 选中的菜单 --%>
 <% String path = request.getContextPath(); %>
 <html>
 <head>
-    <title>主页</title>
+    <title>测试页面</title>
     <meta charset="UTF-8">
     <meta name="keywords" content="关键词,关键字">
     <meta name="description" content="网页描述">
@@ -30,11 +31,11 @@
     <base href="http://localhost">
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid contact">
     <div class="row">
-        <nav class="navbar navbar-expand-md bg-dark navbar-dark col-xl-12">
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark col-xl-12 col-sm-12">
             <div class="container">
-                <a class="navbar-brand" href="<%=path%>/"><img src="http://www.acconsulting.com.cn/images/logo.png" alt="logo"></a>
+                <a class="navbar-brand" href="/"><img src="http://www.acconsulting.com.cn/images/logo.png" alt="logo"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -78,6 +79,36 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
+        </div>
+
+        <%-- 联系方式 - form --%>
+        <div class="container contact-form">
+            <form action="" class="row">
+                <div class="col-sm-4 col-12">
+                    <h1>${langMap.contact_contactUs}</h1>
+                    <label class="w-100">TEL：<input type="text" name="messageUserPhone"></label>
+                    <label class="w-100">Email：<input type="text" name="messageUserEmail"></label>
+                    <label class="w-100">Add：<input type="text" name="messageUserAddressNow"></label>
+                    <label class="w-100"><input type="submit" value="${langMap.form_submit}"></label>
+                </div>
+                <div class="col-sm-8 col-12">
+                    <div class="row">
+                        <input type="text" name="messageUserName" aria-label="${langObj.form.userName}" class="col-4" placeholder="${langObj.form.userName}">
+                        <input type="text" name="messageUserAppellation" aria-label="${langObj.form.userAppellation}" class="col-4" placeholder="${langObj.form.userAppellation}">
+                        <input type="text" name="messageUserCompanyPost" aria-label="${langObj.form.userCompanyPost}" class="col-4" placeholder="${langObj.form.userCompanyPost}">
+                    </div>
+                    <div class="row">
+                        <input type="text" name="messageUserCompanyName" aria-label="${langObj.form.userCompanyName}" class="col-7" placeholder="${langObj.form.userCompanyName}">
+                        <input type="text" name="messageUserCompanyAddress" aria-label="${langObj.form.userCompanyAddress}" class="col-7" placeholder="${langObj.form.userCompanyAddress}">
+                    </div>
+                    <div class="row">
+                        <textarea aria-label="${langObj.form.demand}" class="col-12" style="resize: none;" placeholder="${langObj.form.demand}"></textarea>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <img class="w-100" src="http://www.acconsulting.com.cn/userfiles/PPT-40(7).jpg" alt="map">
+            </div>
         </div>
 
         <%-- 底部模块 --%>

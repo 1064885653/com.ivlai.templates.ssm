@@ -1,0 +1,67 @@
+/* 导航 - logo */
+.navbar .navbar-brand img {
+    margin-top: 0px;
+}
+
+/* 导航 - 间隔 */
+.navbar-expand-md .navbar-nav .nav-link {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+/* 导航 - 正文区域 */
+.navbar-fixed-top + .row {
+    margin-top: 50px;
+}
+
+/* 语言列表 - 背景颜色 */
+#languageList {
+    color: black;
+}
+
+/* 友情链接 */
+.yqlj {
+    background: yellow;
+}
+
+.yqlj .container {
+    height: 40px;
+
+}
+
+.yqlj .container a {
+    line-height: 40px;
+    float: left;
+    color: black;
+    margin-right: 20px;
+}
+
+footer.footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 14px;
+}
+
+footer.footer .info {
+    color: rgba(255, 255, 255, .75);
+}
+
+
+.contact .contact-form {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    border: 1px solid #B5B5B5;
+}
+
+.contact .contact-form form {
+    padding: 40px 25px;
+}
+
+.contact .contact-form form > div:nth-child(2) input,
+.contact .contact-form form > div:nth-child(2) textarea{
+    margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+
+}
