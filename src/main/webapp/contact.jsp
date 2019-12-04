@@ -83,26 +83,32 @@
 
         <%-- 联系方式 - form --%>
         <div class="container contact-form">
-            <form action="" class="row">
+            <form id="form_contact" class="row" onsubmit="mySubmit(this);return false;">
                 <div class="col-sm-4 col-12">
                     <h1>${langMap.contact_contactUs}</h1>
-                    <label class="w-100">TEL：<input type="text" name="messageUserPhone"></label>
-                    <label class="w-100">Email：<input type="text" name="messageUserEmail"></label>
-                    <label class="w-100">Add：<input type="text" name="messageUserAddressNow"></label>
+                    <label class="w-100">TEL：<input type="text" name="messageUserPhone" minlength="7" maxlength="16" required></label>
+                    <label class="w-100">Email：<input type="text" name="messageUserEmail" minlength="6" maxlength="128"></label>
+                    <label class="w-100">Add：<input type="text" name="messageUserAddressNow" minlength="6" maxlength="128"></label>
                     <label class="w-100"><input type="submit" value="${langMap.form_submit}"></label>
                 </div>
                 <div class="col-sm-8 col-12">
                     <div class="row">
-                        <input type="text" name="messageUserName" aria-label="${langObj.form.userName}" class="col-4" placeholder="${langObj.form.userName}">
-                        <input type="text" name="messageUserAppellation" aria-label="${langObj.form.userAppellation}" class="col-4" placeholder="${langObj.form.userAppellation}">
-                        <input type="text" name="messageUserCompanyPost" aria-label="${langObj.form.userCompanyPost}" class="col-4" placeholder="${langObj.form.userCompanyPost}">
+                        <input type="text" name="messageUserName" aria-label="${langObj.form.userName}" class="col-4"
+                               placeholder="${langObj.form.userName}" minlength="2" maxlength="16">
+                        <input type="text" name="messageUserAppellation" aria-label="${langObj.form.userAppellation}" class="col-4"
+                               placeholder="${langObj.form.userAppellation}" minlength="2" maxlength="16">
+                        <input type="text" name="messageUserCompanyPost" aria-label="${langObj.form.userCompanyPost}" class="col-4"
+                               placeholder="${langObj.form.userCompanyPost}" minlength="2" maxlength="16">
                     </div>
                     <div class="row">
-                        <input type="text" name="messageUserCompanyName" aria-label="${langObj.form.userCompanyName}" class="col-7" placeholder="${langObj.form.userCompanyName}">
-                        <input type="text" name="messageUserCompanyAddress" aria-label="${langObj.form.userCompanyAddress}" class="col-7" placeholder="${langObj.form.userCompanyAddress}">
+                        <input type="text" name="messageUserCompanyName" aria-label="${langObj.form.userCompanyName}" class="col-7"
+                               placeholder="${langObj.form.userCompanyName}" minlength="2" maxlength="64">
+                        <input type="text" name="messageUserCompanyAddress" aria-label="${langObj.form.userCompanyAddress}" class="col-7"
+                               placeholder="${langObj.form.userCompanyAddress}" minlength="2" maxlength="64">
                     </div>
                     <div class="row">
-                        <textarea aria-label="${langObj.form.demand}" class="col-12" style="resize: none;" placeholder="${langObj.form.demand}"></textarea>
+                        <textarea aria-label="${langObj.form.demand}" class="col-12" style="resize: none;height: 80px;" placeholder="${langObj.form.demand}"
+                                  minlength="2" maxlength="1024"  ></textarea>
                     </div>
                 </div>
             </form>
@@ -116,5 +122,25 @@
         <jsp:include page="pageModules/footer.jsp"/>
     </div>
 </div>
+<script rel="script">
+    function mySubmit() {
+        $.ajax({
+            url: "<%=path%>/user/lam",
+            type: "post",
+            dataType: "json",
+            data: $("#form_contact").serialize(),
+            success: function (e) {
+                if (e.code) {
+                    alert("保存成功");
+                } else {
+                    alert("保存失败")
+                }
+            }, error: function (e) {
+                alert("网络异常");
+            }
+        });
+        return false;
+    }
+</script>
 </body>
 </html>

@@ -43,7 +43,7 @@ public class IndexController {
     }
 
     @RequestMapping("contact")
-    public String contact(){
+    public String contact() {
         return "contact";
     }
 
